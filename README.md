@@ -1,4 +1,6 @@
-Ngo_Management_System
+                                      Ngo_Management_System
+
+
 
 NGOs or Non-Governmental Organization is an organization that operates 
 independently of any organization. NGOs are typically non-profit organisations 
