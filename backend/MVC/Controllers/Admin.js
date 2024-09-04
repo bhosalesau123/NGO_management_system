@@ -1,7 +1,11 @@
 import adminModel from "../Model/userModel"
 import { hashPassword, comparePassword } from "../../Helper/Hash.js"; 
+import dotenv from "dotenv";
 
-export const loginController = async (req, res) => {
+dotenv.config();
+
+
+export const adminLoginController = async (req, res) => {
     try {
       const { email, password } = req.body;
       // check if user exists
@@ -14,6 +18,15 @@ export const loginController = async (req, res) => {
       if (!isMatch) {
         return res.status(400).send("Invalid credentials");
       }
+
+      const token = jwt.sign({ id:admin._id, role:admin.role }, JWT_SECRET, { expiresIn: "3h" });
+  
+      res.status(201).send({
+        status: "success",
+        message: "Admin registered successfully",
+        admin: newAdmin,
+        token
+      });
       res.status(200).send({
         status: "succes",
         message: "user loged in successfully",
@@ -23,7 +36,7 @@ export const loginController = async (req, res) => {
       res.status(500).send("Internal server error");
     }
   };
-  export const registerController = async (req, res) => {
+  export const adminRegisterController = async (req, res) => {
     try {
       const { name, lastname,email, phone,password} = req.body;
   
@@ -51,14 +64,7 @@ export const loginController = async (req, res) => {
             password: hashedPassword,
           });
   
-          const token = jwt.sign({ userId: newUser._id }, JWT_SECRET, { expiresIn: "3h" });
-  
-          res.status(201).send({
-            status: "success",
-            message: "Admin registered successfully",
-            admin: newAdmin,
-            token
-          });
+         
         }
      catch (error) {
       console.log(`Error in API: ${error}`);

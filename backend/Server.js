@@ -19,6 +19,12 @@ app.use(express.json())
 
 connectDb();
 
+// API Routes
+app.use('/api/v1/user', userRoute);
+app.use('/api/v1/admin', adminRoute);
+app.use('/api/v1/ngo', ngoRoute);
+
+
 
 app.get('/',(req,res)=>{
     res.send({

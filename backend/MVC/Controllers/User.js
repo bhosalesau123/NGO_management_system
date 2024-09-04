@@ -1,10 +1,13 @@
 import jwt from "jsonwebtoken";
 import userModel from "../Model/userModel.js"
-import { hashPassword, comparePassword } from "../../Helper/Hash.js"; 
+import { hashPassword, comparePassword } from "../../Helper/"; 
+import dotenv from "dotenv";
+
+dotenv.config();
 
 
 // login
-export const loginController = async (req, res) => {
+export const userLoginController = async (req, res) => {
   try {
     const { email, password } = req.body;
     // check if user exists
@@ -17,16 +20,21 @@ export const loginController = async (req, res) => {
     if (!isMatch) {
       return res.status(400).send("Invalid credentials");
     }
+
+    const token = await jwt.sign({ id: adminName, role: "admin"}, process.env.JWT_SECRET, {
+      expiresIn: "7d",
+  });
     res.status(200).send({
       status: "succes",
       message: "user loged in successfully",
       user,
+      token
     });
   } catch (error) {
     res.status(500).send("Internal server error");
   }
 };
-export const registerController = async (req, res) => {
+export const userRegisterController = async (req, res) => {
   try {
     const { name, lastname,email, phone,password} = req.body;
 
@@ -38,12 +46,7 @@ export const registerController = async (req, res) => {
         if (!phone) return res.status(400).send("Phone is required");
         if (!password) return res.status(400).send("Password is required");
 
-        // Existing user validation
-        const existingUser = await userModel.findOne({ email });
-        if (existingUser) {
-          return res.status(400).send("User already exists");
-        }
-
+      
         // Create a new user
         const hashedPassword = await hashPassword(password);
         const newUser = await userModel.create({
@@ -54,13 +57,11 @@ export const registerController = async (req, res) => {
           password: hashedPassword,
         });
 
-        const token = jwt.sign({ userId: newUser._id }, JWT_SECRET, { expiresIn: "1h" });
 
         res.status(201).send({
           status: "success",
           message: "User registered successfully",
           user: newUser,
-          token
         });
       }
    catch (error) {

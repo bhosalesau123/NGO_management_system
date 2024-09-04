@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const ngoSchema = new mongoose.Schema({
  
-  orgName: {
+   Name: {
     type: String,
     required: true,
     trim: true
@@ -20,6 +20,12 @@ const ngoSchema = new mongoose.Schema({
     trim: true,
     lowercase: true,
  
+  },
+  password: {
+    type: String,
+    required: true,
+    trim: true,
+    
   },
   phone: {
     type: String,
