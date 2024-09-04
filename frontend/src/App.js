@@ -5,7 +5,7 @@ import Ngo from "./components/Ngo"
 import About from "./components/About"
 import Footer from "./components/Footer1"
 import Login from "./components/Login"
-
+import Register from "./pages/Register";
 
 
 
@@ -22,6 +22,7 @@ function App() {
       <Vision/>
       <Ngo/>
       <About/>
+      <Register/>
       <Footer/>
     </div>
   );
