@@ -1,8 +1,6 @@
-import { userModel } from "../model/userModel.js";
-// import userModel from "../Model/userModel.js";?
 import jwt from "jsonwebtoken";
-import { hashPassword, comparePassword } from "../../Helper/authHelper.js"; 
-import crypto from 'crypto';
+import userModel from "../Model/userModel.js"
+import { hashPassword, comparePassword } from "../../Helper/Hash.js"; 
 
 
 // login
@@ -54,7 +52,6 @@ export const registerController = async (req, res) => {
           email,
           phone,
           password: hashedPassword,
-          image,
         });
 
         const token = jwt.sign({ userId: newUser._id }, JWT_SECRET, { expiresIn: "1h" });

@@ -1,4 +1,6 @@
-// login
+import adminModel from "../Model/userModel"
+import { hashPassword, comparePassword } from "../../Helper/Hash.js"; 
+
 export const loginController = async (req, res) => {
     try {
       const { email, password } = req.body;
@@ -34,7 +36,7 @@ export const loginController = async (req, res) => {
           if (!password) return res.status(400).send("Password is required");
   
           // Existing user validation
-          const existingAdmin = await userModel.findOne({ email });
+          const existingAdmin = await adminModel.findOne({ email });
           if (existingAdmin) {
             return res.status(400).send("User already exists");
           }
@@ -47,7 +49,6 @@ export const loginController = async (req, res) => {
             email,
             phone,
             password: hashedPassword,
-            image,
           });
   
           const token = jwt.sign({ userId: newUser._id }, JWT_SECRET, { expiresIn: "3h" });
@@ -55,7 +56,7 @@ export const loginController = async (req, res) => {
           res.status(201).send({
             status: "success",
             message: "Admin registered successfully",
-            user: newUser,
+            admin: newAdmin,
             token
           });
         }
