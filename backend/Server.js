@@ -1,0 +1,31 @@
+import express from "express";
+import cors from "cors";
+import morgan from  "morgan";
+import colors from  "colors";
+import dotenv from  "dotenv";
+import connectDb from "./Db/Db.js"
+
+dotenv.config();
+
+const app = express()
+const PORT = process.env.PORT || 8000;
+
+//midlewares
+app.use(cors())
+app.use(morgan('dev'))
+app.use(express.json())
+
+//db
+
+connectDb();
+
+
+app.get('/',(req,res)=>{
+    res.send({
+        message:"Hello Saurabh"
+    })
+})
+
+app.listen(PORT,()=>{
+    console.log(`listening to port number ${PORT}`.bgCyan.blue);
+})
