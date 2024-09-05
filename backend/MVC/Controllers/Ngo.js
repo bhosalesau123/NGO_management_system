@@ -69,3 +69,64 @@ export const ngoRegisterController = async (req, res) => {
   }
 
 };
+
+export const ngoUpdateController = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const {  name, regNumber,email, phone,password,address,description,website } = req.body;
+
+    const ngo = await userModel.findById(id);
+    if (!ngo) {
+      return res.status(404).send("User not found");
+    }
+
+    if (email && email !== ngo.email) {
+      const existingNgo = await userModel.findOne({ email });
+      if (existingNgo) {
+        return res.status(400).send("Email already in use");
+      }
+    }
+
+    if (name) ngo.name = name;
+    if (regNumber) ngo.regNumber =regNumber;
+    if (email) ngo.email = email;
+    if (phone) ngo.phone = phone;
+    if (password) ngo.password = password;
+    if (address) ngo.address = address;
+    if (description) ngo.description = description;
+    if (website) user.website = website;
+    if (password) user.password = await hashPassword(password);
+
+    const updatedNgo = await ngo.save();
+
+    res.status(200).send({
+      status: "success",
+      message: "Ngo updated successfully",
+      ngo: updatedNgo,
+    });
+  } catch (error) {
+    console.log(`Error in API: ${error}`);
+    res.status(500).send("Internal server error");
+  }
+};
+
+export const deleteNgoController = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const ngo = await ngoModel.findById(id);
+    if (!ngo) {
+      return res.status(404).send("Ngo not found");
+    }
+
+    await ngoModel.findByIdAndDelete(id);
+
+    res.status(200).send({
+      status: "success",
+      message: "Ngo deleted successfully",
+    });
+  } catch (error) {
+    console.log(`Error in API: ${error}`);
+    res.status(500).send("Internal server error");
+  }
+};

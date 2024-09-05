@@ -70,3 +70,60 @@ export const userRegisterController = async (req, res) => {
   }
 
 };
+
+export const userUpdateController = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, lastname, email, phone, password } = req.body;
+
+    const user = await userModel.findById(id);
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+
+    if (email && email !== user.email) {
+      const existingUser = await userModel.findOne({ email });
+      if (existingUser) {
+        return res.status(400).send("Email already in use");
+      }
+    }
+
+    if (name) user.name = name;
+    if (lastname) user.lastname = lastname;
+    if (email) user.email = email;
+    if (phone) user.phone = phone;
+    if (password) user.password = await hashPassword(password);
+
+    const updatedUser = await user.save();
+
+    res.status(200).send({
+      status: "success",
+      message: "User updated successfully",
+      user: updatedUser,
+    });
+  } catch (error) {
+    console.log(`Error in API: ${error}`);
+    res.status(500).send("Internal server error");
+  }
+};
+
+export const deleteUserController = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const user = await userModel.findById(id);
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+
+    await userModel.findByIdAndDelete(id);
+
+    res.status(200).send({
+      status: "success",
+      message: "User deleted successfully",
+    });
+  } catch (error) {
+    console.log(`Error in API: ${error}`);
+    res.status(500).send("Internal server error");
+  }
+};
