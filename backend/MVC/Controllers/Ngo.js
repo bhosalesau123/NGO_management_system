@@ -48,6 +48,7 @@ export const ngoLoginController = async (req, res) => {
 export const ngoRegisterController = async (req, res) => {
   try {
     const { name, regNumber,email, phone,password,address,description,website} = req.body;
+    let image = req.file ? req.file.path : null;
 
     
         // Validation

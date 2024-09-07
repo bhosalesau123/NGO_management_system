@@ -28,7 +28,13 @@ const Footer = () => {
           <li>mon-fri/9:00 am to 5:00 pm</li>
           </ul>
         </div>
+<div className="copyright">
 
+<p>
+        Saurabh Bhosale &copy; {new Date().getFullYear()} . All rights are reserved.
+      </p>
+      <p>Designed with love</p>
+</div>
       </div>
     </>
   );

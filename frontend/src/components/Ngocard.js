@@ -56,8 +56,8 @@ const Ngocard = () => {
                 <div className="ngo-card-content">
                   <h2>{ngo.name}</h2>
                   <p>{ngo.description}</p>
-                  <p><strong>Contact:</strong> {ngo.contactEmail}</p>
-                  <p><strong>Phone:</strong> {ngo.contactPhone}</p>
+                  <p><strong>Contact:</strong> {ngo.email}</p>
+                  <p><strong>Phone:</strong> {ngo.phone}</p>
                 </div>
               </div>
             ))}

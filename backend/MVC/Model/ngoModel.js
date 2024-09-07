@@ -2,17 +2,17 @@ import mongoose from 'mongoose';
 
 const ngoSchema = new mongoose.Schema({
  
+  image: {
+    type: Buffer,
+    contentType:String,
+    required: false
+  },
    Name: {
     type: String,
     required: true,
     trim: true
   },
-  regNumber: {
-    type: String,
-    required: true,
-    unique: true,
-    trim: true
-  },
+  
   email: {
     type: String,
     required: true,
