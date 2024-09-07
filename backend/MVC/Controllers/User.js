@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import userModel from "../Model/userModel.js"
-import { hashPassword, comparePassword } from "../../Helper/"; 
+import { hashPassword, comparePassword } from "../../Helper/Hash.js"; 
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -37,6 +37,7 @@ export const userLoginController = async (req, res) => {
 export const userRegisterController = async (req, res) => {
   try {
     const { name, lastname,email, phone,password} = req.body;
+    let image = req.file ? req.file.path : null;
 
     
         // Validation

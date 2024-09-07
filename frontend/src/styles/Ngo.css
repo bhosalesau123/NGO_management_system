@@ -1,0 +1,120 @@
+/* General container */
+.ngo-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 30px;
+  }
+  
+  /* Wrapper for the carousel and buttons */
+  .carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Carousel container */
+  .ngo-card-carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 20px 0;
+  }
+  
+  /* Hide scrollbar */
+  .ngo-card-carousel::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .ngo-card-carousel {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  /* Individual card styling */
+  .ngo-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 0 15px;
+    flex: 0 0 300px; /* Fixed width for the cards */
+    transition: transform 0.3s ease;
+  }
+  
+  .ngo-card:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Card image styling */
+  .ngo-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  /* Card content styling */
+  .ngo-card-content {
+    padding: 20px;
+    text-align: left;
+  }
+  
+  .ngo-card-content h2 {
+    font-size: 1.5rem;
+    color: #007bff;
+    margin-bottom: 10px;
+  }
+  
+  .ngo-card-content p {
+    margin: 5px 0;
+    color: #555;
+  }
+  
+  .ngo-card-content strong {
+    color: #333;
+  }
+  
+  /* Buttons for scrolling */
+  .scroll-button {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+  
+  .scroll-button.left {
+    left: 0;
+  }
+  
+  .scroll-button.right {
+    right: 0;
+  }
+  
+  .scroll-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Media queries for responsiveness */
+  @media (max-width: 768px) {
+    .ngo-card-carousel {
+      padding: 10px;
+    }
+    
+    .ngo-card {
+      flex: 0 0 80%; /* Cards take more space on smaller screens */
+    }
+  }
+  

@@ -1,35 +1,50 @@
-import jwt from "jsonwebtoken";
-import ngoModel from "../Model/ngoModel.js"
-import { hashPassword, comparePassword } from "../../Helper/Hash.js"; 
 
+import jwt from "jsonwebtoken";
+import ngoModel from "../Model/ngoModel.js";
+import { hashPassword, comparePassword } from "../../Helper/Hash.js";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 // login
 export const ngoLoginController = async (req, res) => {
   try {
     const { email, password } = req.body;
-    // check if user exists
+
+    // Check if user exists
     const ngo = await ngoModel.findOne({ email });
     if (!ngo) {
-      return res.status(404).send("ngo not sound" )                                                                                                                  not found");
+      return res.status(404).send("ngo not found");
     }
-    // check if password is correct
+
+    // Check if password is correct
     const isMatch = await comparePassword(password, ngo.password);
     if (!isMatch) {
       return res.status(400).send("Invalid credentials");
     }
 
-    const token = jwt.sign({ id: ngo._id ,pass:ngo.password }, JWT_SECRET, { expiresIn: "1h" });
+    // Get JWT_SECRET from environment variables
+    const JWT_SECRET = process.env.JWT_SECRET;
+    
+    // Generate JWT token
+    const token = jwt.sign({ id: ngo._id, pass: ngo.password }, JWT_SECRET, { expiresIn: "1h" });
 
+    // Successful response
     res.status(200).send({
-      status: "succes",
-      message: "ngo loged in successfully",
+      status: "success",  // Fixed typo
+      message: "ngo logged in successfully",
       ngo,
-      token
+      token,
     });
   } catch (error) {
+    console.error(error);  // Added for debugging
     res.status(500).send("Internal server error");
   }
 };
+
+
+
+
 export const ngoRegisterController = async (req, res) => {
   try {
     const { name, regNumber,email, phone,password,address,description,website} = req.body;

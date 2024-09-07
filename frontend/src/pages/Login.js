@@ -1,33 +1,61 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
+import "../styles/Login.css"
+
 const LoginForm = () => {
   // State for storing form inputs
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false); // To track loading state
 
-  // Handle  submission
-  const handleSubmit = (e) => {
+  // Function to handle form submission
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Basic validation for empty fields
     if (!email || !password) {
       setError('Please fill out both fields.');
       return;
     }
 
-    // Clear  previous errors
+    // Clear previous errors
     setError('');
+    setLoading(true); // Start loading
 
+    try {
+      // Send a POST request to your backend server
+      const response = await axios.post('https://example.com/api/login', {
+        email,
+        password,
+      });
 
-    // Reset form fields
-    setEmail('');
-    setPassword('');
+      // Handle the successful response here
+      console.log('Login successful:', response.data);
+
+      // Reset form fields after a successful submission
+      setEmail('');
+      setPassword('');
+    } catch (err) {
+      // Handle errors here
+      if (err.response && err.response.data) {
+        // Show error from server response
+        setError(err.response.data.message || 'Login failed. Please try again.');
+      } else {
+        // General error message
+        setError('Something went wrong. Please try again.');
+      }
+    } finally {
+      setLoading(false); // Stop loading after response
+    }
   };
 
   return (
     <div>
       <h2>Login</h2>
+      {/* Display error message */}
       {error && <p style={{ color: 'red' }}>{error}</p>}
+
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="email">Email:</label>
@@ -39,6 +67,7 @@ const LoginForm = () => {
             required
           />
         </div>
+
         <div>
           <label htmlFor="password">Password:</label>
           <input
@@ -49,7 +78,11 @@ const LoginForm = () => {
             required
           />
         </div>
-        <button type="submit">Login</button>
+
+        {/* Disable the button if loading */}
+        <button type="submit" disabled={loading}>
+          {loading ? 'Logging in...' : 'Login'}
+        </button>
       </form>
     </div>
   );

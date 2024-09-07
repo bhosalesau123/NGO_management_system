@@ -6,6 +6,7 @@ import About from "./components/About"
 import Footer from "./components/Footer1"
 import Login from "./components/Login"
 import Register from "./pages/Register";
+import Layout from "./pages/Layout";
 
 
 
@@ -19,11 +20,7 @@ function App() {
           <Route path="/contact"  element={<Footer/>} />
           <Route path="/login"  element={<Login/>} />
         </Routes>
-      <Vision/>
-      <Ngo/>
-      <About/>
-      <Register/>
-      <Footer/>
+      <Layout/>
     </div>
   );
 }

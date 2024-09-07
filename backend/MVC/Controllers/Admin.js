@@ -1,4 +1,4 @@
-import adminModel from "../Model/userModel"
+import adminModel from "../Model/userModel.js"
 import { hashPassword, comparePassword } from "../../Helper/Hash.js"; 
 import dotenv from "dotenv";
 

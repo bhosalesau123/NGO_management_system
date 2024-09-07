@@ -13,7 +13,7 @@
   },
   "scripts": {
     "start": "node Server.js",
-    "server": "nodemon Server.js"
+    "dev": "nodemon Server.js"
   },
   "name": "backend",
   "version": "1.0.0",

@@ -1,81 +1,102 @@
-import React from 'react'
-import { useState } from 'react';
-const Register = () => {
-     // State to hold form data
+
+// src/components/RegisterForm.js
+import React, { useState } from "react";
+import axios from "axios";
+import "../styles/Register.css";
+
+const RegisterForm = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: ''
+    name: "",
+    lastname: "",
+    email: "",
+    phone: "",
+    password: ""
   });
 
-  // State to handle errors
-  const [errors, setErrors] = useState({});
+  const [image, setImage] = useState(null);
+  const [message, setMessage] = useState("");
 
-  // Handle form field changes
   const handleChange = (e) => {
-    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [e.target.name]: e.target.value
     });
   };
 
-  // Handle form submission
-  const handleSubmit = (e) => {
+  const handleImageChange = (e) => {
+    setImage(e.target.files[0]);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-   
-      };
-  
-  // Validate form data
-  const validate = (data) => {
-    const errors = {};
-    if (!data.name) errors.name = 'Name is required.';
-    if (!data.email) errors.email = 'Email is required.';
-    if (!data.password) errors.password = 'Password is required.';
-    return errors;
-};
+
+    const formDataWithImage = new FormData();
+    formDataWithImage.append("name", formData.name);
+    formDataWithImage.append("lastname", formData.lastname);
+    formDataWithImage.append("email", formData.email);
+    formDataWithImage.append("phone", formData.phone);
+    formDataWithImage.append("password", formData.password);
+    if (image) {
+      formDataWithImage.append("image", image);
+    }
+
+    try {
+      const response = await axios.post("http://localhost:8080/api/v1/user/register", formDataWithImage, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      });
+      console.log(response.data);
+      setMessage("User registered successfully!");
+
+      // Clear the form
+      setFormData({
+        name: "",
+        lastname: "",
+        email: "",
+        phone: "",
+        password: ""
+      });
+      setImage(null);
+    } catch (error) {
+      console.error(error);
+      setMessage("Failed to register user.");
+    }
+  };
+
   return (
-    <div className='login'>
-        <h2>Register</h2>
+    <div className="form-container">
+      <h2>Register</h2>
+      {message && <p>{message}</p>}
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-          {errors.name && <p style={{ color: 'red' }}>{errors.name}</p>}
+        <div className="form-group">
+          <label>Name</label>
+          <input type="text" name="name" value={formData.name} onChange={handleChange} required />
         </div>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-          {errors.email && <p style={{ color: 'red' }}>{errors.email}</p>}
+        <div className="form-group">
+          <label>Last Name</label>
+          <input type="text" name="lastname" value={formData.lastname} onChange={handleChange} required />
         </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-          {errors.password && <p style={{ color: 'red' }}>{errors.password}</p>}
+        <div className="form-group">
+          <label>Email</label>
+          <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+        </div>
+        <div className="form-group">
+          <label>Phone</label>
+          <input type="text" name="phone" value={formData.phone} onChange={handleChange} required />
+        </div>
+        <div className="form-group">
+          <label>Password</label>
+          <input type="password" name="password" value={formData.password} onChange={handleChange} required />
+        </div>
+        <div className="form-group">
+          <label>Profile Image</label>
+          <input type="file" name="image" onChange={handleImageChange} />
         </div>
         <button type="submit">Register</button>
       </form>
-      
     </div>
-  )
-}
+  );
+};
 
-export default Register
+export default RegisterForm;
