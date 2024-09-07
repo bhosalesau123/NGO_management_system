@@ -41,7 +41,7 @@ const RegisterForm = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:8080/api/v1/user/register", formDataWithImage, {
+      const response = await axios.post("", formDataWithImage, {
         headers: {
           "Content-Type": "multipart/form-data"
         }

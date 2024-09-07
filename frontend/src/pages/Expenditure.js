@@ -10,7 +10,7 @@ const ExpenditureForm = () => {
   const [expenditures, setExpenditures] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/expenditures')
+    axios.get('')
       .then(response => setExpenditures(response.data))
       .catch(error => console.error(error));
   }, []);
@@ -18,7 +18,7 @@ const ExpenditureForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.post('/api/expenditures', { date, amount,  description })
+    axios.post('', { date, amount,  description })
       .then(response => {
         setExpenditures([...expenditures, response.data]);
         setDate('');

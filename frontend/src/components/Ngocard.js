@@ -14,7 +14,7 @@ const Ngocard = () => {
   // Function to fetch the NGO data
   const fetchNgoData = async () => {
     try {
-      const response = await axios.get('https://your-backend-api-url.com/api/ngos');
+      const response = await axios.get("");
       setNgoData(response.data);  // Assuming the response is an array of NGO details
       setLoading(false);
     } catch (err) {
