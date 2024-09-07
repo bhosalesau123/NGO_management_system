@@ -5,16 +5,19 @@ import Navbar from 'react-bootstrap/Navbar';
 const Admin_header =()=> {
   return (
     <>
-      <Navbar bg="dark" data-bs-theme="dark">
+
+<Navbar bg="secondary" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+          <Navbar.Brand href="#home">user logo</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <Nav.Link href="">Ngo</Nav.Link>
+            <Nav.Link href="#">Expenditures</Nav.Link>
+            <Nav.Link href="#"></Nav.Link>
           </Nav>
         </Container>
       </Navbar>
+     
+     
      
     </>
   );
