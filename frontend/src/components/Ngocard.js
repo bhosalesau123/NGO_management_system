@@ -52,7 +52,7 @@ const Ngocard = () => {
           <div className="ngo-card-carousel" ref={carouselRef}>
             {ngoData.map((ngo) => (
               <div className="ngo-card" key={ngo.id}>
-                <img src={ngo.imageUrl} alt={ngo.name} className="ngo-image" />
+                <img src={ngo.image} alt={ngo.name} className="ngo-image" />
                 <div className="ngo-card-content">
                   <h2>{ngo.name}</h2>
                   <p>{ngo.description}</p>
