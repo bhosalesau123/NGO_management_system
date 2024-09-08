@@ -6,10 +6,12 @@ import "../styles/Register.css";
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
     name: "",
-    lastname: "",
+    regNumber: "",
     email: "",
-    phone: "",
-    password: ""
+    password: "",
+    address: "",
+    description: "",
+    website: ""
   });
 
   const [image, setImage] = useState(null);
@@ -31,16 +33,20 @@ const RegisterForm = () => {
 
     const formDataWithImage = new FormData();
     formDataWithImage.append("name", formData.name);
-    formDataWithImage.append("lastname", formData.lastname);
+    formDataWithImage.append("regNumber", formData.regNumber);
     formDataWithImage.append("email", formData.email);
-    formDataWithImage.append("phone", formData.phone);
     formDataWithImage.append("password", formData.password);
+
+    formDataWithImage.append("address", formData.address);
+    formDataWithImage.append("description", formData.description);
+    formDataWithImage.append("website", formData.website);
+
     if (image) {
       formDataWithImage.append("image", image);
     }
 
     try {
-      const response = await axios.post("", formDataWithImage, {
+      const response = await axios.post("http://localhost:8080/api/v1/ngo/ngo-register", formDataWithImage, {
         headers: {
           "Content-Type": "multipart/form-data"
         }
@@ -51,10 +57,12 @@ const RegisterForm = () => {
       // Clear the form
       setFormData({
         name: "",
-        lastname: "",
+        regNumber: "",
         email: "",
-        phone: "",
-        password: ""
+        password: "",
+        address: "",
+        description: "",
+        website: "",
       });
       setImage(null);
     } catch (error) {
@@ -73,20 +81,29 @@ const RegisterForm = () => {
           <input type="text" name="name" value={formData.name} onChange={handleChange} required />
         </div>
         <div className="form-group">
-          <label>Last Name</label>
-          <input type="text" name="lastname" value={formData.lastname} onChange={handleChange} required />
+          <label>Registration number</label>
+          <input type="text" name="regNumber" value={formData.regNumber} onChange={handleChange} required />
         </div>
         <div className="form-group">
           <label>Email</label>
           <input type="email" name="email" value={formData.email} onChange={handleChange} required />
         </div>
-        <div className="form-group">
-          <label>Phone</label>
-          <input type="text" name="phone" value={formData.phone} onChange={handleChange} required />
-        </div>
+        
         <div className="form-group">
           <label>Password</label>
           <input type="password" name="password" value={formData.password} onChange={handleChange} required />
+        </div>
+        <div className="form-group">
+          <label>Address</label>
+          <input type="text" name="address" value={formData.address} onChange={handleChange} required />
+        </div>
+        <div className="form-group">
+          <label>Description</label>
+          <input type="text" name="description" value={formData.description} onChange={handleChange} required />
+        </div>
+        <div className="form-group">
+          <label>Website</label>
+          <input type="text" name="website" value={formData.website} onChange={handleChange} required />
         </div>
         <div className="form-group">
           <label>Profile Image</label>

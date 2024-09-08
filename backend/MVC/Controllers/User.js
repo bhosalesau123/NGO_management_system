@@ -55,6 +55,7 @@ export const userRegisterController = async (req, res) => {
           lastname,
           email,
           phone,
+          image,
           password: hashedPassword,
         });
 

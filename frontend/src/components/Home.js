@@ -17,10 +17,10 @@ const Home = () => {
                 <Link to="/">Home</Link>
               </li>
               <li className="Nav">
-                <Link to="/footer">About Us</Link>
+                <Link to="/About">About Us</Link>
               </li>
               <li className="Nav">
-                <Link to="/contact">Contact</Link>
+                <Link to="/Contact">Contact</Link>
               </li>
               <li className="Nav">
                 <Link to="/login">Login</Link>

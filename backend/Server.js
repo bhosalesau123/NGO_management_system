@@ -4,7 +4,7 @@ import morgan from  "morgan";
 import colors from  "colors";
 import dotenv from  "dotenv";
 import connectDb from "./Db/Db.js"
-import userRoute from "./MVC/Route/userRoute.js"
+import userRoute from "./MVC/Route/userRoute1.js"
 import adminRoute from "./MVC/Route/adminRoute.js"
 import ngoRoute from "./MVC/Route/ngoRoute.js"
 

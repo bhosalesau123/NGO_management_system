@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import "../styles/Login.css"
+import { Link } from 'react-router-dom';
 
 const LoginForm = () => {
   // State for storing form inputs
@@ -25,7 +26,7 @@ const LoginForm = () => {
 
     try {
       // Send a POST request to your backend server
-      const response = await axios.post('', {
+      const response = await axios.post('http://localhost:8080/api/v1/login', {
         email,
         password,
       });
@@ -49,8 +50,7 @@ const LoginForm = () => {
       setLoading(false); // Stop loading after response
     }
   };
-
-  return (
+return(
     <div>
       <h2>Login</h2>
       {/* Display error message */}
@@ -84,6 +84,10 @@ const LoginForm = () => {
           {loading ? 'Logging in...' : 'Login'}
         </button>
       </form>
+<div>
+    <div>dont have an account<Link to ="/register">create account</Link></div>
+    <Link to ="/ngo-register">create ngo account</Link>
+    </div>
     </div>
   );
 };
