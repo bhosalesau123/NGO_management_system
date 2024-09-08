@@ -160,7 +160,7 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
-import '../styles/Ngo.css';  // Importing the CSS for the carousel
+import '../styles/Ngo.css';  
 
 const Ngocard = () => {
   const [ngoData, setNgoData] = useState([]);
@@ -170,21 +170,20 @@ const Ngocard = () => {
   // Ref for the scroll container
   const carouselRef = useRef(null);
 
-  // Function to fetch the NGO data
   const fetchNgoData = async () => {
     try {
       const response = await axios.get("http://localhost:8080/api/v1/ngo/Ngo");
       setNgoData(response.data.getngo);  // Assuming the response contains the "getngo" array
-      console.log(response.data);        // Logging to debug data structure
+      console.log(response.data);        
       setLoading(false);
     } catch (err) {
-      console.error(err);               // Log the error for debugging
+      console.error(err);               
       setError('Failed to fetch NGO details');
       setLoading(false);
     }
   };
 
-  // useEffect to fetch the data when the component mounts
+  // useEffect to fetch the data 
   useEffect(() => {
     fetchNgoData();
   }, []);

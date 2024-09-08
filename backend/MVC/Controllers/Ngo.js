@@ -25,7 +25,7 @@ export const ngoLoginController = async (req, res) => {
       return res.status(400).send("Invalid credentials");
     }
 
-    // Get JWT_SECRET from environment variables
+    
     const JWT_SECRET = process.env.JWT_SECRET;
     
     // Generate JWT token
@@ -39,7 +39,7 @@ export const ngoLoginController = async (req, res) => {
       token,
     });
   } catch (error) {
-    console.error(error);  // Added for debugging
+    console.error(error);  
     res.status(500).send("Internal server error");
   }
 };
