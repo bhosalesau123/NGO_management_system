@@ -6,6 +6,10 @@ import Footer from "./components/Footer1"
 import Login from "./pages/Login1"
 import Register from "./pages/Register";
 import Layout from "./pages/Layout";
+import Userdash from "./pages/UserDashboard"
+import Admindash from "./pages/Admdash"
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 // react-dom.development.js:28478 Uncaught Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
 
@@ -32,6 +36,10 @@ function App() {
           <Route path="/contact"  element={<Footer/>} />
           <Route path="/login"  element={<Login/>} />
           <Route path="/register"  element={<Register/>} />
+          <Route path="/user-dash"  element={<Userdash/>} />
+          <Route path="/admin-dash"  element={<Admindash/>} />
+
+
       
         </Routes>
   

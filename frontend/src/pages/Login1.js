@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import "../styles/Login.css"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 import "../styles/Login.css"
+import User from "./UserDashboard"
+// import Admin from "./AdDash"
+
 
 const LoginForm = () => {
   // State for storing form inputs
@@ -10,7 +14,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false); // To track loading state
-
+  const navigate = useNavigate(); 
   // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,10 +38,26 @@ const LoginForm = () => {
 
       // Handle the successful response here
       console.log('Login successful:', response.data);
-
+      console.log(response.data.user.role)
+     
       // Reset form fields after a successful submission
       setEmail('');
       setPassword('');
+      // const { token, user } = response.data;
+      // localStorage.setItem('token', token); // Save the token
+
+      // // Determine redirect path based on user role
+      // if (user.role==="user") {
+      //   history.push(<User/>); // Redirect to admin dashboard
+      // } else {
+      //   history.push('/user'); // Redirect to user dashboard
+      // }
+        if (response.data.user.role === "user") {
+          navigate('/user-dash'); // Redirect to user dashboard route
+        } else if (response.data.user.role === "admin") {
+          navigate('/admin-dash'); // Redirect to admin dashboard route
+        }
+
     } catch (err) {
       // Handle errors here
       if (err.response && err.response.data) {
@@ -58,7 +78,7 @@ return(
       {/* Display error message */}
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit }>
         <div>
           <label htmlFor="email">Email:</label>
           <input
