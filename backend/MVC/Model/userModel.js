@@ -3,8 +3,8 @@ import mongoose from 'mongoose';
 
 // Define the user schema
 const userSchema = new mongoose.Schema({
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
+  name: { type: String, required: true },
+  lastname: { type: String, required: true },
   image: {
     type: Buffer,
     contentType:String,
@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
   phone: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  role: { type: String, enum: ['user', 'admin',"ngo"], default: 'user' } // Define roles
+  role: { type: String, enum: ['user', 'admin'], default: 'user' } // Define roles
 },
 { timestamps: true });
 

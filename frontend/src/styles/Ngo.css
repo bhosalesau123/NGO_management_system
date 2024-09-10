@@ -1,7 +1,14 @@
 /*  container */
+
+.ngo-register{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .ngo-container {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 ;
     padding: 20px;
     text-align: center;
   }
@@ -108,13 +115,13 @@
   }
   
   /* Media queries for responsiveness */
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     .ngo-card-carousel {
       padding: 10px;
     }
     
     .ngo-card {
       flex: 0 0 80%; /* Cards take more space on smaller screens */
-    }
+   /* }
   }
-  
+   */

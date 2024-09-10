@@ -1,7 +1,5 @@
 import Home from "./components/Home";
-import { BrowserRouter as Router,Routes, Route,  } from "react-router-dom";
-import Vision from "./components/Vision";
-import Ngo from "./components/Ngo"
+import { Routes, Route,  } from "react-router-dom";
 import Ngoregister from "./pages/Ngoregister"
 import About from "./components/About"
 import Footer from "./components/Footer1"
@@ -28,17 +26,16 @@ function App() {
     <div className="App">
      
         <Routes>
-          <Route path="/" exact element={<Layout/>} />
+          <Route path="/" exact element={<Home/>} />
           <Route path="/about" element={<About/>} />
-          <Route path="/ngo"  element={<Ngo/>} />
           <Route path="/ngo-register"  element={<Ngoregister/>} />
           <Route path="/contact"  element={<Footer/>} />
           <Route path="/login"  element={<Login/>} />
           <Route path="/register"  element={<Register/>} />
-          
-        </Routes>
-     
       
+        </Routes>
+  
+  
      
     </div>
   );

@@ -47,15 +47,19 @@ a:hover {
     padding:0 5px 5px 0
     
 }
-.main{
+.main-vision{
     background-color: whitesmoke;
+    background-size: cover;
+    height: 400px;
 }
 .vision {
     text-align: center;
-    padding: 0 520px;
+    padding: 10px 0px;
 }
 .vision-text{
     font-size: 30px;
+    padding:5px 500px;
+    color: rgb(69, 69, 158);
 }
 .footer {
    

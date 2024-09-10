@@ -1,6 +1,16 @@
-div {
+.login-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+
+
+.Login {
+  align-content: center;
     max-width: 400px;
-    margin: 50px auto;
+    margin: 50px ;
     padding: 20px;
     background-color: #f5f5f5;
     border-radius: 8px;
@@ -12,7 +22,7 @@ div {
     color: #333;
     margin-bottom: 20px;
   }
-  
+  /* https://meet.google.com/oke-chrv-cii */
   form {
     display: flex;
     flex-direction: column;

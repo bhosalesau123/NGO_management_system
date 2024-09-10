@@ -72,6 +72,7 @@ const RegisterForm = () => {
   };
 
   return (
+    <div className="ngo-register">
     <div className="form-container">
       <h2>Register</h2>
       {message && <p>{message}</p>}
@@ -111,6 +112,7 @@ const RegisterForm = () => {
         </div>
         <button type="submit">Register</button>
       </form>
+    </div>
     </div>
   );
 };

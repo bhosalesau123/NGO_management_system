@@ -72,7 +72,7 @@ export const ngoRegisterController = async (req, res) => {
       return res.status(400).send(err);
     } else {
       const { name, regNumber,email, password,address,description,website} = req.body;
-      let image = req.file ? req.file.path : null;
+      const image = req.file ? req.file.path : null;
 
   
     // Validation

@@ -10,7 +10,8 @@ const RegisterForm = () => {
     lastname: "",
     email: "",
     phone: "",
-    password: ""
+    password: "",
+    role:""
   });
 
   const [image, setImage] = useState(null);
@@ -36,12 +37,13 @@ const RegisterForm = () => {
     formDataWithImage.append("email", formData.email);
     formDataWithImage.append("phone", formData.phone);
     formDataWithImage.append("password", formData.password);
+    formDataWithImage.append("role", formData.role);
     if (image) {
       formDataWithImage.append("image", image);
     }
 
     try {
-      const response = await axios.post("http://localhost:8080/api/v1/register", formDataWithImage, {
+      const response = await axios.post("http://localhost:8080/api/v1/user/register", formDataWithImage, {
         headers: {
           "Content-Type": "multipart/form-data"
         }
@@ -55,7 +57,8 @@ const RegisterForm = () => {
         lastname: "",
         email: "",
         phone: "",
-        password: ""
+        password: "",
+        role:""
       });
       setImage(null);
     } catch (error) {
@@ -65,6 +68,7 @@ const RegisterForm = () => {
   };
 
   return (
+    <div className="register-form">
     <div className="form-container">
       <h2>Register</h2>
       {message && <p>{message}</p>}
@@ -90,11 +94,16 @@ const RegisterForm = () => {
           <input type="password" name="password" value={formData.password} onChange={handleChange} required />
         </div>
         <div className="form-group">
+          <label>Role</label>
+          <input type="text" name="role" value={formData.role} onChange={handleChange} required />
+        </div>
+        <div className="form-group">
           <label>Profile Image</label>
           <input type="file" name="image" onChange={handleImageChange} />
         </div>
         <button type="submit">Register</button>
       </form>
+    </div>
     </div>
   );
 };

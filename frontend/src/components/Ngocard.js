@@ -201,7 +201,7 @@ const Ngocard = () => {
 
   return (
     <div className="ngo-container">
-      <h1>NGO Management System</h1>
+      <h1 style={{textAlign:"center"}}>NGO</h1>
 
       {loading ? (
         <p>Loading NGO details...</p>
@@ -225,7 +225,9 @@ const Ngocard = () => {
                   <h2>{ngo.name}</h2>
                   <p>{ngo.description}</p>
                   <p><strong>Contact:</strong> {ngo.email}</p>
-                  <p><strong>Phone:</strong> {ngo.phone}</p>
+                </div>
+                <div>
+                  <button type='submit' >Donate</button>
                 </div>
               </div>
             ))}

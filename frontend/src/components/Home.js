@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Home.css";
 import homeimage from "../assets/Ngo-home.avif";
+import Layout from "../pages/Layout"
 const Home = () => {
   return (
     <>
@@ -29,6 +30,7 @@ const Home = () => {
           </nav>
         </div>
       </div>
+      <Layout/>
     </>
   );
 };

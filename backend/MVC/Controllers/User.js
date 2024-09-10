@@ -1,6 +1,8 @@
 import jwt from "jsonwebtoken";
-import userModel from "../Model/userModel.js"
+import User from "../Model/userModel.js"
 import { hashPassword, comparePassword } from "../../Helper/Hash.js"; 
+import upload from "../../Middleware/Multer.js"
+
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -11,7 +13,7 @@ export const userLoginController = async (req, res) => {
   try {
     const { email, password } = req.body;
     // check if user exists
-    const user = await userModel.findOne({ email });
+    const user = await User.findOne({ email });
     if (!user) {
       return res.status(404).send("user not found");
     }
@@ -21,7 +23,7 @@ export const userLoginController = async (req, res) => {
       return res.status(400).send("Invalid credentials");
     }
 
-    const token = await jwt.sign({ id: adminName, role: "admin"}, process.env.JWT_SECRET, {
+    const token = await jwt.sign({ id:user._id, role:user.role}, process.env.JWT_SECRET, {
       expiresIn: "7d",
   });
     res.status(200).send({
@@ -36,8 +38,12 @@ export const userLoginController = async (req, res) => {
 };
 export const userRegisterController = async (req, res) => {
   try {
-    const { name, lastname,email, phone,password} = req.body;
-    let image = req.file ? req.file.path : null;
+    upload(req, res, async (err) => {
+      if (err) {
+        return res.status(400).send(err);
+      } else {
+    const { name, lastname,email, phone,password,role} = req.body;
+   let  image = req.file ? req.file.path : null;
 
     
         // Validation
@@ -46,17 +52,20 @@ export const userRegisterController = async (req, res) => {
         if (!email) return res.status(400).send("Email is required");
         if (!phone) return res.status(400).send("Phone is required");
         if (!password) return res.status(400).send("Password is required");
+        if (!role) return res.status(400).send("role is required");
+
 
       
         // Create a new user
         const hashedPassword = await hashPassword(password);
-        const newUser = await userModel.create({
+        const newUser = await User.create({
           name,
           lastname,
           email,
           phone,
           image,
           password: hashedPassword,
+          role
         });
 
 
@@ -65,6 +74,8 @@ export const userRegisterController = async (req, res) => {
           message: "User registered successfully",
           user: newUser,
         });
+      }
+    });
       }
    catch (error) {
     console.log(`Error in API: ${error}`);
@@ -78,7 +89,7 @@ export const userUpdateController = async (req, res) => {
     const { id } = req.params;
     const { name, lastname, email, phone, password } = req.body;
 
-    const user = await userModel.findById(id);
+    const user = await User.findById(id);
     if (!user) {
       return res.status(404).send("User not found");
     }
@@ -113,7 +124,7 @@ export const deleteUserController = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const user = await userModel.findById(id);
+    const user = await User.findById(id);
     if (!user) {
       return res.status(404).send("User not found");
     }

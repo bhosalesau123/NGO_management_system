@@ -3,8 +3,7 @@ import mongoose from 'mongoose';
 
 const ngoSchema = new mongoose.Schema({
   image: {
-    type: Buffer,
-    contentType:String, // Store the path to the image file
+    type: String,
     required: false
   },
   name: {
