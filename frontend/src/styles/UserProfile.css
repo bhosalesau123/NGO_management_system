@@ -1,0 +1,106 @@
+/* Sidebar Styles
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: grey;
+    color: white;
+    padding: 20px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  
+  .sidebar-toggle {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 30px;
+    color: grey;
+    cursor: pointer;
+  }
+  
+  .profile-details h2 {
+    margin-top: 0;
+  }
+  
+  .update-btn {
+    display: block;
+    margin-top: 20px;
+    background-color: white;
+    color: grey;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  } */
+  
+ /* This is new css    */
+ /* Sidebar wrapper */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background-color: grey;
+  color: white;
+  padding: 20px;
+  transform: translateX(-100%); /* Sidebar hidden by default */
+  transition: transform 0.3s ease; /* Smooth transition for opening/closing */
+}
+
+/* Sidebar open state */
+.sidebar.open {
+  transform: translateX(0); /* Sidebar visible when the 'open' class is added */
+}
+
+/* Sidebar toggle button */
+.sidebar-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 30px;
+  color: grey;
+  cursor: pointer;
+  z-index: 1000; /* Ensure it stays on top of other elements */
+}
+
+/* Sidebar header styling */
+.sidebar-header {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Profile details styling */
+.profile-details {
+  margin-bottom: 30px;
+}
+
+.profile-details p {
+  margin: 10px 0;
+  font-size: 16px;
+  color:black;
+}
+
+/* Update profile button */
+.update-profile-btn {
+  display: block;
+  background-color: white;
+  color: grey;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.update-profile-btn:hover {
+  background-color: lightgrey;
+}

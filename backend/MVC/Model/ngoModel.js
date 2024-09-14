@@ -38,10 +38,16 @@ const ngoSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
+ 
   website: {
     type: String,
     trim: true
-  }
+  },
+  isApproved: {
+    type: Boolean,
+    default: false, },// Default is false until admin approves it
+
+  
 }, { timestamps: true });
 
 const NGO = mongoose.model('NGO', ngoSchema);

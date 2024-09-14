@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import "../styles/Login.css"
 import { Link, useNavigate } from 'react-router-dom';
-
+import NgoDash from "../pages/NgoDash"
 import "../styles/Login.css"
 import User from "./UserDashboard"
 // import Admin from "./AdDash"
@@ -32,7 +32,7 @@ const LoginForm = () => {
     try {
       // Send a POST request to your backend server
       const response = await axios.post('http://localhost:8080/api/v1/user/login', {
-        email,
+        email,                         
         password,
       });
 
@@ -57,6 +57,7 @@ const LoginForm = () => {
         } else if (response.data.user.role === "admin") {
           navigate('/admin-dash'); // Redirect to admin dashboard route
         }
+        
 
     } catch (err) {
       // Handle errors here
@@ -108,7 +109,6 @@ return(
       </form><br/>
 <div>
     <div style ={{alignContent:"center"}}>dont have an account<hr/><Link to ="/register" style={{color:"blue"}}>create account</Link></div>
-    <Link to ="/ngo-register" style={{color:"blue"}}>create ngo account</Link>
     </div>
     </div>
     </div>

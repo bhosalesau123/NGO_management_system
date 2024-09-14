@@ -1,8 +1,10 @@
 import express from "express"
-import { adminLoginController} from "../Controllers/Admin.js";
+import { getNgoController,ngoUpdateController,deleteNgoController} from "../Controllers/Ngo.js";
 
 const router = express.Router();
 
-// router.post("/login", adminLoginController);
+router.get("/pending-ngos", getNgoController);
+// router.patch("update-ngo", ngoUpdateController)
+router.delete("delete-ngo",deleteNgoController)
 
 export default router;

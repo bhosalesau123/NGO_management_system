@@ -1,7 +1,6 @@
 import jwt from "jsonwebtoken";
 import User from "../Model/userModel.js"
 import { hashPassword, comparePassword } from "../../Helper/Hash.js"; 
-import upload from "../../Middleware/Multer.js"
 
 import dotenv from "dotenv";
 
@@ -38,10 +37,7 @@ export const userLoginController = async (req, res) => {
 };
 export const userRegisterController = async (req, res) => {
   try {
-    upload(req, res, async (err) => {
-      if (err) {
-        return res.status(400).send(err);
-      } else {
+  
     const { name, lastname,email, phone,password,role} = req.body;
    let  image = req.file ? req.file.path : null;
 
@@ -74,8 +70,8 @@ export const userRegisterController = async (req, res) => {
           message: "User registered successfully",
           user: newUser,
         });
-      }
-    });
+      
+    
       }
    catch (error) {
     console.log(`Error in API: ${error}`);
@@ -83,6 +79,33 @@ export const userRegisterController = async (req, res) => {
   }
 
 };
+
+// controllers/userController.js
+
+
+
+ export const getUserProfile = async (req, res) => {
+  try {
+    // Find user by ID (assuming req.user.id contains the authenticated user ID)
+    const user = await User.findById(req.user.id).select('-password'); // Exclude password in the response
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Send user details (excluding the password)
+    res.json({
+      name: user.name,
+      lastname: user.lastname,
+      email: user.email,
+      phone: user.phone,
+    });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
 
 export const userUpdateController = async (req, res) => {
   try {

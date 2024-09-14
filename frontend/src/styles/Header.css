@@ -1,0 +1,28 @@
+.nav{
+    display: flex;
+    justify-content: flex-end;
+    background-color: #257ae1;
+}
+.Navbar{
+    color: #0e1319;
+    
+}
+.link{
+    color:black;
+    text-decoration:none;
+    font-weight: bold;
+}
+li {
+    list-style-type: none;
+    
+}
+
+h1{
+    text-align: center;
+    margin:10px
+}
+li Link{
+    text-decoration: none;
+    color: black
+    
+}

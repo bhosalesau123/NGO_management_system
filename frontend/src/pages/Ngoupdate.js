@@ -1,9 +1,11 @@
-// src/components/RegisterForm.js
 import React, { useState } from "react";
 import axios from "axios";
-import "../styles/Ngoregister.css";
+import "../styles/Ngoupdate.css";
+import { useParams } from "react-router-dom";
 
 const RegisterForm = () => {
+    const { id } = useParams(); // Get 'id' from the URL parameters
+
   const [formData, setFormData] = useState({
     name: "",
     regNumber: "",
@@ -14,6 +16,7 @@ const RegisterForm = () => {
     website: ""
   });
 
+  const [image, setImage] = useState(null);
   const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
@@ -23,31 +26,36 @@ const RegisterForm = () => {
     });
   };
 
-  
+  const handleImageChange = (e) => {
+    setImage(e.target.files[0]);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append("name", formData.name);
-    formData.append("regNumber", formData.regNumber);
-    formData.append("email", formData.email);
-    formData.append("password", formData.password);
+    const formDataWithImage = new FormData();
+    formDataWithImage.append("name", formData.name);
+    formDataWithImage.append("regNumber", formData.regNumber);
+    formDataWithImage.append("email", formData.email);
+    formDataWithImage.append("password", formData.password);
 
-    formData.append("address", formData.address);
-    formData.append("description", formData.description);
-    formData.append("website", formData.website);
+    formDataWithImage.append("address", formData.address);
+    formDataWithImage.append("description", formData.description);
+    formDataWithImage.append("website", formData.website);
 
-    
+    if (image) {
+      formDataWithImage.append("image", image);
+    }
 
     try {
-      const response = await axios.post("http://localhost:8080/api/v1/ngo/ngo-register", formData, {
+        
+      const response = await axios.patch(`http://localhost:8080/api/v1/ngo/update/${id}` , formDataWithImage, {
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "multipart/form-data"
         }
       });
       console.log(response.data);
-      setMessage("User registered successfully!");
+      setMessage("Ngo update successfully!");
 
       // Clear the form
       setFormData({
@@ -59,16 +67,17 @@ const RegisterForm = () => {
         description: "",
         website: "",
       });
+      setImage(null);
     } catch (error) {
       console.error(error);
-      setMessage("Failed to register user.");
+      setMessage("Failed to update ngo.");
     }
   };
 
-  return (<>
-    <div className="register-form">
+  return (
+    <div className="ngo-update">
     <div className="form-container">
-      <h2>Register</h2>
+      <h2>Update</h2>
       {message && <p>{message}</p>}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -100,13 +109,14 @@ const RegisterForm = () => {
           <label>Website</label>
           <input type="text" name="website" value={formData.website} onChange={handleChange} required />
         </div>
-       
-        <button type="submit">Register</button>
+        <div className="form-group">
+          <label>Profile Image</label>
+          <input type="file" name="image" onChange={handleImageChange} />
+        </div>
+        <button type="submit">Update</button>
       </form>
     </div>
     </div>
-   
-    </>
   );
 };
 

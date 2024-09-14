@@ -9,6 +9,11 @@ import Layout from "./pages/Layout";
 import Userdash from "./pages/UserDashboard"
 import Admindash from "./pages/Admdash"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import NgoDash from "./pages/NgoDash";
+import NgoLogin from "./pages/Ngologin"
+import Ngoupdate from "./pages/Ngoupdate"
+import UpdateUser from "./pages/UpdateUserProfile"
+import Payment from "./pages/Payment"
 
 
 // react-dom.development.js:28478 Uncaught Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
@@ -35,9 +40,18 @@ function App() {
           <Route path="/ngo-register"  element={<Ngoregister/>} />
           <Route path="/contact"  element={<Footer/>} />
           <Route path="/login"  element={<Login/>} />
+          <Route path="/Ngo-Login"  element={<NgoLogin/>} />
+          <Route path="/payment" exact element={< Payment/>} />
+
           <Route path="/register"  element={<Register/>} />
           <Route path="/user-dash"  element={<Userdash/>} />
           <Route path="/admin-dash"  element={<Admindash/>} />
+          <Route path="/NgoDash"  element={<NgoDash/>} />
+          <Route path="/Ngoupdate/:id"  element={<Ngoupdate/>} />
+          <Route path="/update-profile"  element={<UpdateUser/>} />
+
+
+
 
 
       

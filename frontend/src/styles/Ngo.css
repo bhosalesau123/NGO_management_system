@@ -1,10 +1,10 @@
 /*  container */
 
-.ngo-register{
+/* .ngo-register{
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .ngo-container {
     max-width: 1200px;

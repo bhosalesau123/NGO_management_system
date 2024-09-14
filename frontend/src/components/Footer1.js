@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <>
+    <><div className="footer-main">
       <div className="footer" id ="footer">
         <div className="adress">
           <h3>Adress</h3>
@@ -29,12 +29,13 @@ const Footer = () => {
           </ul>
         </div>
 
-        <div className="copyright" style={{justifyContent:"center",flexDirection:"column"}}>
-      <p style={{color:"black"}}>  Saurabh Bhosale &copy; {new Date().getFullYear()} . All rights are reserved.
+        
+      </div>
+      <div className="copyright" style={{justifyContent:"center",flexDirection:"column",}}>
+      <p style={{color:"black",marginBottom:"20px"}}>  Saurabh Bhosale &copy; {new Date().getFullYear()} . All rights are reserved.
       </p>
 </div>
       </div>
-
       
     </>
   );

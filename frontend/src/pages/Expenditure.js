@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../styles/Expenditure.ss'; // Import the CSS file
+import '../styles/Expenditure.css'; // Import the CSS file
 
 const ExpenditureForm = () => {
   const [date, setDate] = useState('');
@@ -39,10 +39,10 @@ const ExpenditureForm = () => {
           Amount:
           <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} required />
         </label>
-        <label>
+        {/* <label>
           Category:
           <input type="text" value={category} onChange={(e) => setCategory(e.target.value)} required />
-        </label>
+        </label> */}
         <label>
           Description:
           <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />

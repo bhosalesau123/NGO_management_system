@@ -15,16 +15,19 @@ const Home = () => {
           <nav>
             <ul className="Header">
               <li className="Nav">
-                <Link to="/">Home</Link>
+                <Link to="/" className="Link">Home</Link>
               </li>
               <li className="Nav">
-                <Link to="/About">About Us</Link>
+                <Link to="/About" className="Link">About Us</Link>
               </li>
               <li className="Nav">
-                <Link to="/Contact">Contact</Link>
+                <Link to="/Contact" className="Link">Contact</Link>
               </li>
               <li className="Nav">
-                <Link to="/login">Login</Link>
+                <Link to="/login" className="Link">Login</Link>
+              </li>
+              <li className="Nav">
+                <Link to="/ngo-login" className="Link">Ngo-Login</Link>
               </li>
             </ul>
           </nav>

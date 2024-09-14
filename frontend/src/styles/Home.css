@@ -1,16 +1,22 @@
 
 
-li {
+.Nav {
     list-style-type: none;
+    text-decoration: none;
 }
 
+.Link{
+    text-decoration:none;
+    color:black;
+    font-weight:bold
+}
 a {
     text-decoration: none;
     color: black;
     font-size: medium;
 }
 a:hover {
-    color: whitesmoke;
+    color: rgb(9, 4, 4);
     font-style: italic;
 }
 .img-container {
@@ -48,7 +54,7 @@ a:hover {
     
 }
 .main-vision{
-    background-color: whitesmoke;
+    /* background-color: whitesmoke; */
     background-size: cover;
     height: 400px;
 }
@@ -66,8 +72,11 @@ a:hover {
     display: flex;
     justify-content: space-around;
     height: 300px;
-    background-color: lightgray;
+   
   
+}
+.footer-main{
+    background-color: lightgray;
 }
 li{
     list-style-type: circle;
@@ -80,5 +89,7 @@ cursor: pointer;
 
 }
 
-
+.copyright{
+    margin-bottom: 10px;
+}
 
