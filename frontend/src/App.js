@@ -1,4 +1,5 @@
 import Home from "./components/Home";
+import React from "react";
 import { Routes, Route,  } from "react-router-dom";
 import Ngoregister from "./pages/Ngoregister"
 import About from "./components/About"
@@ -36,7 +37,7 @@ function App() {
      
         <Routes>
           <Route path="/" exact element={<Home/>} />
-          <Route path="/about" element={<About/>} />
+          {/* <Route path="/about" element={<About/>} />
           <Route path="/ngo-register"  element={<Ngoregister/>} />
           <Route path="/contact"  element={<Footer/>} />
           <Route path="/login"  element={<Login/>} />
@@ -48,7 +49,7 @@ function App() {
           <Route path="/admin-dash"  element={<Admindash/>} />
           <Route path="/NgoDash"  element={<NgoDash/>} />
           <Route path="/Ngoupdate/:id"  element={<Ngoupdate/>} />
-          <Route path="/update-profile"  element={<UpdateUser/>} />
+          <Route path="/update-profile"  element={<UpdateUser/>} /> */}
 
 
 

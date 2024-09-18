@@ -1,0 +1,123 @@
+/* Navbar container */
+.navbar {
+ 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  background-color: #f9fbfd; /* Navy background */
+  padding: 10px 20px;
+  font-family: 'Arial', sans-serif;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.258); /* Subtle shadow for depth */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* Full width to span the entire viewport */
+  z-index: 1000; /* Ensure it sits above other content */
+}
+
+/* Logo styling */
+.navbar-logo img {
+  height: 80px; /* Adjusted size for better fit */
+  width: auto; /* Maintain aspect ratio */
+}
+
+/* Navbar menu styling */
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar item styling */
+.navbar-item {
+  position: relative;
+  display: inline-block;
+}
+
+/* Navbar links styling */
+.navbar-item a {
+  color: #0a0000; /* White text color */
+  font-size: 1rem;
+  padding: 8px 16px;
+  display: block;
+  text-decoration: none; /* Remove default underline */
+  transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+  position: relative;
+}
+
+/* Hover effect for navbar links */
+.navbar-item a:hover {
+  color: #ffffff; /* White text color on hover */
+  background-color: #1a0758; /* Teal background color on hover */
+  border-radius: 4px; /* Slightly rounded corners */
+}
+
+/* Underline effect */
+.navbar-item a::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #007bff; /* Blue underline */
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Underline effect on hover */
+.navbar-item a:hover::before {
+  transform: scaleX(1);
+}
+
+/* Social Media Icons */
+.navbar-social {
+  display: flex;
+  gap: 20px; /* Space between social media icons */
+}
+
+.navbar-social a {
+  color: #2a12b6; /* White icons */
+  text-decoration: none;
+}
+
+.social-icon {
+  font-size: 1.5rem; /* Icon size */
+  transition: color 0.3s ease;
+}
+
+.navbar-social a:hover .social-icon {
+  color: #3e077d; /* Teal color on hover */
+}
+
+/* Donate Button */
+.Donate {
+  background-color: #00bf49; /* Teal color */
+  color: #ffffff;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  margin-right:5px ; /* Align button to the right */
+}
+
+.Donate:hover {
+  background-color: #00796b; /* Darker teal on hover */
+}
+
+/* Responsive design for mobile screens */
+@media (max-width: 768px) {
+  .navbar-menu {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+}
+
+  
+  

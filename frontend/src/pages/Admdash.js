@@ -8,7 +8,7 @@ const Admdash = () => {
     <div className='admin-dash'>
         <h1>Admin Dashboard</h1>
       <Header/>
-    <Addngo/>
+    <div><Addngo/></div>
       <Ngo/>
     </div>
   )

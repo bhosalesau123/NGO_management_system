@@ -1,0 +1,113 @@
+/* Ongoing Programs Section */
+.ongoing-programs {
+  padding: 60px 0;
+  background-color: #e6ecf5; /* Light navy blue background */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #2b3a67; /* Darker navy blue for the title */
+  margin-bottom: 50px;
+  font-weight: bold;
+}
+
+/* Programs Grid */
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 40px; /* Adds more space between each program */
+  justify-items: center;
+}
+
+/* Program Item */
+.program-item {
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.program-item:hover {
+  transform: translateY(-10px); /* Lifts the program item on hover */
+}
+
+/* Program Image */
+.program-image-wrapper {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow around the image */
+}
+
+.program-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.program-item:hover .program-image {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Program Content */
+.program-title {
+  font-size: 1.3rem;
+  color: #2b3a67;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.program-description {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.program-link {
+  display: inline-block;
+  background-color: #28a745; /* Green button */
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.program-link:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .programs-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .programs-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

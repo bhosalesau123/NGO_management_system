@@ -1,41 +1,41 @@
-import React from 'react'
+import React from "react";
+import "../styles/Footer.css"; // Ensure you have the CSS file linked
 
-const About = () => {
+const Footer = () => {
   return (
-    <div className='About'>
+    <div className="footer-main">
+      <div className="footer">
+        <div className="footer-section address">
+          <h3>Address</h3>
+          <p className="address-text">
+            Navrang Arcade, Chatrapati Shivaji Maharaj Path, Naupada Thane
+          </p>
+        </div>
 
-<div className='Heading'><h1>About Us</h1></div>
-<div className='main-content'>
-Welcome to NGO Management System, the one-stop solution for non-profit organizations to efficiently manage their operations, projects, and community impact. Our platform is designed to empower NGOs by providing them with the tools they need to organize their work, collaborate with their teams, and track their progress towards making the world a better place.
+        <div className="footer-section explore">
+          <h3>Explore Us</h3>
+          <ul>
+            <li>About Us</li>
+            <li>Donate</li>
+            <li>Contact</li>
+          </ul>
+        </div>
 
-Our Mission
-Our mission is to simplify and enhance the management processes of non-governmental organizations, enabling them to focus more on their social causes and less on administrative tasks. We believe that by empowering NGOs with innovative technology, we can help them amplify their efforts and maximize their impact on communities in need.
-</div>
+        <div className="footer-section contact-us">
+          <h3>Contact Info</h3>
+          <ul>
+            <li>7498216958</li>
+            <li>bhosalesau96@gmail.com</li>
+            <li>Mon-Fri / 9:00 AM to 5:00 PM</li>
+          </ul>
+        </div>
+      </div>
 
+      <div className="copyright">
+        <p>Saurabh Bhosale &copy; {new Date().getFullYear()}. All rights reserved.</p>
+      </div>
+    </div>
+  );
+};
 
-<div className='Heading2'><h3> What We Do</h3></div>
-<div className='main-content'>
-At NGO Management System, we provide a comprehensive platform that helps NGOs:
-
-Manage Projects and Campaigns: Plan, monitor, and execute projects from start to finish with real-time updates and team collaboration tools.
-Track Donations and Funds: Keep track of donations, donor information, and fund allocations to ensure transparency and trust with supporters.
-   
-</div>
-
-<div className='Heading3'><h3>Why Choose Us?</h3></div>
-<div className='main-content'>
-
-Tailored for NGOs: Our system is built specifically for the unique needs of non-profit organizations. We understand the challenges NGOs face, and we’ve developed solutions that simplify day-to-day operations.
-
-User-Friendly: The platform is intuitive and easy to use, with no need for extensive training. Whether you're a small grassroots organization or a large international NGO, our tools are designed to make management more efficient.
-
-Transparent and Secure: We prioritize data security and transparency, ensuring your organization’s data is safe and that stakeholders have clear insight into how resources are utilized.
-
-Support for Growth: As your NGO grows, our system scales with you, offering advanced features for larger teams and more complex projects.
-</div>
-</div>
-    
-  )
-}
-
-export default About
+export default Footer;

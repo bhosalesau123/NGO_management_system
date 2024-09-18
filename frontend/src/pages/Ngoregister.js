@@ -24,47 +24,34 @@ const RegisterForm = () => {
   };
 
   
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const formData = new FormData();
-    formData.append("name", formData.name);
-    formData.append("regNumber", formData.regNumber);
-    formData.append("email", formData.email);
-    formData.append("password", formData.password);
-
-    formData.append("address", formData.address);
-    formData.append("description", formData.description);
-    formData.append("website", formData.website);
-
-    
-
+ 
     try {
-      const response = await axios.post("http://localhost:8080/api/v1/ngo/ngo-register", formData, {
-        headers: {
-          "Content-Type": "application/json"
-        }
-      });
-      console.log(response.data);
-      setMessage("User registered successfully!");
-
-      // Clear the form
-      setFormData({
-        name: "",
-        regNumber: "",
-        email: "",
-        password: "",
-        address: "",
-        description: "",
-        website: "",
-      });
+       const response = await axios.post("http://localhost:8080/api/v1/ngo/ngo-register", formData, {
+         headers: {
+           "Content-Type": "application/json"
+         }
+       });
+       console.log(response.data);
+       setMessage("User registered successfully!");
+ 
+       // Clear the form
+       setFormData({
+         name: "",
+         regNumber: "",
+         email: "",
+         password: "",
+         address: "",
+         description: "",
+         website: "",
+       });
     } catch (error) {
-      console.error(error);
-      setMessage("Failed to register user.");
+       console.error(error);
+       setMessage("Failed to register user.");
     }
-  };
-
+ };
+ 
   return (<>
     <div className="register-form">
     <div className="form-container">

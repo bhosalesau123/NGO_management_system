@@ -1,5 +1,5 @@
 import React from "react";
-
+import "../styles/Footer.css"
 const Footer = () => {
   return (
     <><div className="footer-main">
@@ -32,7 +32,7 @@ const Footer = () => {
         
       </div>
       <div className="copyright" style={{justifyContent:"center",flexDirection:"column",}}>
-      <p style={{color:"black",marginBottom:"20px"}}>  Saurabh Bhosale &copy; {new Date().getFullYear()} . All rights are reserved.
+      <p style={{color:"Gray", fontWeight:"bold", marginBottom:"20px"}}>  Saurabh Bhosale &copy; {new Date().getFullYear()} . All rights are reserved.
       </p>
 </div>
       </div>

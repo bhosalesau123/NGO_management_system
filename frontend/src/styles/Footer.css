@@ -1,0 +1,106 @@
+/* Main Footer Container */
+.footer-main {
+    background-color: #04244d; /* Navy blue background */
+    color: #f4f4f4; /* Light text color for contrast */
+    padding: 40px 0;
+    text-align: center;
+  }
+  
+  /* Footer Section */
+  .footer {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Footer Column */
+  .footer div {
+    flex: 1;
+    margin: 10px;
+    min-width: 200px;
+  }
+  
+  /* Address Section */
+  .adress {
+    margin-bottom: 20px;
+  }
+  
+  .adress h3 {
+    color: #4CAF50; /* Green for headings */
+    margin-bottom: 10px;
+  }
+  
+  .adress-text {
+    color: #e0e0e0; /* Light gray text for readability */
+  }
+  
+  /* Explore Us Section */
+  .explore {
+    margin-bottom: 20px;
+  }
+  
+  .explore h3 {
+    color: #4CAF50; /* Green for headings */
+    margin-bottom: 10px;
+  }
+  
+  .explore ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .explore li {
+    color: #e0e0e0; /* Light gray text for list items */
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .explore li:hover {
+    color: #4CAF50; /* Green on hover */
+  }
+  
+  /* Contact Us Section */
+  .contact-us {
+    margin-bottom: 20px;
+  }
+  
+  .contact-us h3 {
+    color: #4CAF50; /* Green for headings */
+    margin-bottom: 10px;
+  }
+  
+  .contact-us ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .contact-us li {
+    color: #e0e0e0; /* Light gray text for list items */
+    margin-bottom: 8px;
+  }
+  
+  /* Copyright Section */
+  .copyright {
+    margin-top: 20px;
+  }
+  
+  .copyright p {
+    color: #e0e0e0; /* Light gray text for copyright */
+    margin: 0;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .footer {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .footer div {
+      margin: 10px 0;
+    }
+  }
+  

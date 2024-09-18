@@ -216,7 +216,7 @@ return(
         </button>
       </form><br/>
 <div>
-    <div style ={{alignContent:"center"}}>dont have an account<hr/><Link to ="/register" style={{color:"blue"}}>create account</Link></div>
+    <div style ={{alignContent:"center"}}>dont have an account<hr/><Link to ="/ngo-register" style={{color:"blue"}}>create account</Link></div>
     </div>
     </div>
     </div>

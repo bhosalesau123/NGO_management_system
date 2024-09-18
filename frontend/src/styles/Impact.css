@@ -1,0 +1,86 @@
+/* Section styling */
+.impact-section {
+    padding: 50px 0;
+    background: linear-gradient(135deg, #f0f4f8 50%, #b7e4c7 50%); /* Light gray to green gradient */
+    text-align: center;
+  }
+  
+  .impact-title {
+    font-size: 2.5rem;
+    color: #1d3557; /* Dark navy blue for the title */
+    margin-bottom: 40px;
+    font-weight: bold;
+  }
+  
+  /* Grid styling */
+  .impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+    gap: 30px;
+    justify-items: center;
+    align-items: center;
+  }
+  
+  /* Individual item styling */
+  .impact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f4f8; /* Light gray background for each item */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .impact-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Circular image wrapper */
+  .impact-image-wrapper {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #fcfdff; /* Dark blue border */
+    margin-bottom: 20px;
+  }
+  
+  /* Image inside the circle */
+  .impact-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .impact-image-wrapper:hover .impact-image {
+    transform: scale(1.1); /* Slight zoom on hover */
+  }
+  
+  /* Number styling */
+  .impact-number {
+    font-size: 2rem;
+    color: #006d77; /* Dark green for impact numbers */
+    margin: 10px 0;
+    font-weight: bold;
+  }
+  
+  /* Description styling */
+  .impact-description {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #555;
+    margin-top: 5px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .impact-item {
+      margin: 0 5px;
+    }
+  }
+  
+  

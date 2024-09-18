@@ -62,10 +62,18 @@ a:hover {
     text-align: center;
     padding: 10px 0px;
 }
+.our-vision{
+margin-bottom: 5px;
+
+}
 .vision-text{
     font-size: 30px;
     padding:5px 500px;
     color: rgb(69, 69, 158);
+    margin-top: 5px;
+}
+.main-vision{
+    background-color: whitesmoke;
 }
 .footer {
    

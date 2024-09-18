@@ -1,6 +1,6 @@
 import express from "express"
 import { ngoLoginController, ngoRegisterController,getNgoController,approveNGO, ngoUpdateController,deleteNgoController} from "../Controllers/Ngo.js";
-
+import {requireSignIn} from "../../Middleware/Auth.js"
 
 const router = express.Router();
 

@@ -52,7 +52,7 @@ const ApproveNGOs = () => {
   return (<>
     <div className="ngo-control">
     <div className="add-ngo">
-      <h3>Add NGOs</h3>
+      <h1>Add NGOs</h1>
       {ngos.length > 0 ? (
         ngos.map((ngo) => (
           <div key={ngo._id}>
@@ -65,7 +65,7 @@ const ApproveNGOs = () => {
       )}
     </div>
     <div className="update-ngo">
-    <h3>Update NGOs</h3>
+    <h1>Update NGOs</h1>
       {ngos.length > 0 ? (
         ngos.map((ngo) => (
           <div key={ngo._id}>
